@@ -5,9 +5,9 @@ CC = gcc
 CFLAGS = -std=c99 -Wall -Wextra -pedantic -g
 
 # Default (first) target -- fill this in
-a6: a6.o
-	$(CC) $(CFLAGS) -o a6 a6.o
+CellExtraction: CellExtraction.o
+	$(CC) $(CFLAGS) -o CellExtraction CellExtraction.o
 
-# Compiles a6.c into an object file
-a6.o: a6.c
-	$(CC) $(CFLAGS) -c a6.c
+# Compiles CellExtraction.c into an object file
+CellExtraction.o: CellExtraction.c
+	$(CC) $(CFLAGS) -c CellExtraction.c
