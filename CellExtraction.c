@@ -1,4 +1,13 @@
+// CellExtraction.c 
+// (Relies upon a color-segmented DIC image in .PPM format)
+// 
+// Wu Lab, Johns Hopkins University
+//
+// Author: Sun Jay Yoo
+// Date: June 15, 2017
+
 #include <stdio.h>
+
 #include <string.h>
 #include <stdlib.h>
 

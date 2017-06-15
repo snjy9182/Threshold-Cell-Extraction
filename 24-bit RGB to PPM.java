@@ -1,7 +1,12 @@
-/*
- * This plugin writes a PGM/PPM/PNM.
- * LGPL'ed by Johannes Schindelin in 2006.
- */
+// 24-bit RGB to PPM.java
+// (Relies upon a 24-bit RGB color output of a segmented DIC image)
+// (Referenced from Johannes Schindelin's PNM_Writer.java)
+//
+// Wu Lab, Johns Hopkins University
+//
+// Author: Sun Jay Yoo
+// Date: June 15, 2017
+
 import ij.*;
 import ij.process.*;
 import ij.gui.*;
@@ -18,7 +23,7 @@ public class PNM_Writer implements PlugIn {
 	public void run(String arg) {
 		ImagePlus img=IJ.getImage();
 		if (img.getStackSize() != 1) {
-			IJ.error("Can only save 2D images!");
+			IJ.error("Error Code 1: can only save 2D images.");
 			return;
 		}
 		boolean isGray = false;
@@ -29,7 +34,7 @@ public class PNM_Writer implements PlugIn {
 		} else if (img.getBitDepth()==24)
 			extension = ".ppm";
 		else {
-			IJ.error("Can only save 8-bit and 24-bit RGB images!");
+			IJ.error("Error Code 2: can only save 8-bit and 24-bit RGB images.");
 			return;
 		}
 		String title=img.getTitle();
@@ -51,11 +56,11 @@ public class PNM_Writer implements PlugIn {
 			OutputStream fileOutput =
 				new FileOutputStream(dir + name);
 			DataOutputStream output =
-				new DataOutputStream(fileOutput);
+				new DataOutputStream(fileOutput);∑
 
 			int w = img.getWidth(), h = img.getHeight();
 			output.writeBytes((isGray ? "P5" : "P6")
-					+ "\n# Written by ImageJ PNM Writer\n"
+					+ "\n# Written by ImageJ PPM Writer\n"
 					+ w + " " + h + "\n255\n");
 			if (isGray)
 				output.write(
@@ -80,7 +85,7 @@ public class PNM_Writer implements PlugIn {
 			output.flush();
 		} catch(IOException e) {
 			e.printStackTrace();
-			IJ.error("Error writing file");
+			IJ.error("Error Code 3: error writing file.");
 		}
 		IJ.showStatus("");
 	}
