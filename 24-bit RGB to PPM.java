@@ -56,7 +56,7 @@ public class PNM_Writer implements PlugIn {
 			OutputStream fileOutput =
 				new FileOutputStream(dir + name);
 			DataOutputStream output =
-				new DataOutputStream(fileOutput);∑
+				new DataOutputStream(fileOutput);
 
 			int w = img.getWidth(), h = img.getHeight();
 			output.writeBytes((isGray ? "P5" : "P6")

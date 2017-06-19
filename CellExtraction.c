@@ -7,7 +7,6 @@
 // Date: June 15, 2017
 
 #include <stdio.h>
-
 #include <string.h>
 #include <stdlib.h>
 
@@ -94,9 +93,8 @@ void writeFile(char *filename, image *img){
 }
 
 void extract(image *img){
-    int i;
     if(img){
-         for(i=0;i<img->x*img->y;i++){
+         for(int i=0;i<img->x*img->y;i++){
             if (img->pixelData[i].red == redInput && img->pixelData[i].green == greenInput && img->pixelData[i].blue == blueInput){
                 img->pixelData[i].red = 255;
                 img->pixelData[i].green = 255;
@@ -125,7 +123,6 @@ int main(){
 
     puts("Menu:\n"
         "'x' - extract color individually\n"
-        "'a' - extract all colors automatically\n"
         "'q' - quit program:");
     while (bool){
         char i = getchar();
@@ -142,9 +139,8 @@ int main(){
             extract(newImage);
             writeFile(filewrite, newImage);
             puts("Menu:\n"
-                "Type 'x' to extract colors individually.\n"
-                "Type 'a' to extract all colors automatically.\n"
-                "Type 'q' to quit program.");
+                "'x' - extract color individually\n"
+                "'q' - quit program:");
         } else if (i == 'q'){
             bool = 0;
         }
